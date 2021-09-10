@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { SearchComponent } from './app/search/search.component';
-import { CardComponent } from './app/movies/card/card.component';
+import { SearchComponent } from './movies/search/search.component';
+import { CardComponent } from './movies/card/card.component';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { CardComponent } from './app/movies/card/card.component';
     CardComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
