@@ -9,10 +9,10 @@ export class MovieService {
 
   constructor( private http: HttpClient) { }
 
-  private baseUrl: string = 'https://ghibliapi.herokuapp.com/';
+  private baseUrl: string = 'https://ghibliapi.herokuapp.com';
 
   getAllMovies(): Observable<any>{
-    return this.http.get<any>(`${ this.baseUrl }/films/2baf70d1-42bb-4437-b551-e5fed5a87abe`);
+    return this.http.get<any>(`${ this.baseUrl }/films`);
   }
 
 }
