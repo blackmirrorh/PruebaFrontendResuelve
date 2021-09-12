@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Movie } from '../interfaces/movie.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,12 @@ export class MovieService {
 
   private baseUrl: string = 'https://ghibliapi.herokuapp.com';
 
-  getAllMovies(): Observable<any>{
-    return this.http.get<any>(`${ this.baseUrl }/films`);
+  getAllMovies(): Observable<Movie[]>{
+    return this.http.get<Movie[]>(`${ this.baseUrl }/films`);
+  }
+
+  getMovieById( idMovie: string ): Observable<Movie>{
+    return this.http.get<Movie>(`${ this.baseUrl }/films/${ idMovie }`);
   }
 
 }

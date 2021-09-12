@@ -10,25 +10,31 @@ import { Movie } from '../interfaces/movie.interface';
 export class SearchComponent implements OnInit {
 
   movies: Movie[] = [];
-  movie: string = '';
+  word: string = '';
+  haveMovies: boolean = false;
+  finded: boolean = false
 
   constructor( private movieService: MovieService) {
   }
 
   ngOnInit(): void {
+    this.haveMovies = true;
   }
 
-  find( movie: string ) {
-    console.log( movie );
-    this.movie = movie;    
+  find( word: string ) {
+    this.haveMovies = false;
+    console.log( word );
+    this.word = word;    
     this.movieService.getAllMovies()
         .subscribe(movies =>{
           this.movies = movies;
-          console.log(this.movies);
+          this.finded = true;
+          console.log(this.movies.find(element => element.title.toLowerCase() == this.word.toLowerCase()));
+          this.haveMovies = true;
         }, err => {
           console.error('Error en la data' + err);
         }
-    );
+    );    
   }
 
 }
