@@ -13,6 +13,7 @@ export class SearchComponent implements OnInit {
   word: string = '';
   haveMovies: boolean = false;
   finded: boolean = false
+  foundMovies: Movie[] = [];
 
   constructor( private movieService: MovieService) {
   }
@@ -23,13 +24,19 @@ export class SearchComponent implements OnInit {
 
   find( word: string ) {
     this.haveMovies = false;
-    console.log( word );
+    this.foundMovies = [];
     this.word = word;    
     this.movieService.getAllMovies()
         .subscribe(movies =>{
           this.movies = movies;
           this.finded = true;
-          console.log(this.movies.find(element => element.title.toLowerCase() == this.word.toLowerCase()));
+          let j = 0;
+          for (let i = 0; i < this.movies.length; i++) {
+            if( (this.movies[i].title.toLowerCase().search( this.word.toLowerCase() )) >= 0 ){
+              this.foundMovies[j] = this.movies[i];
+              j += 1;
+            }
+          }
           this.haveMovies = true;
         }, err => {
           console.error('Error en la data' + err);
