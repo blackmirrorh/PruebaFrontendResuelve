@@ -3,6 +3,7 @@
 Prueba de frontend para Ingeniería Resuelve.
 
 El proyecto consiste en un buscador de películas de Studio Ghibli con ayuda de un API https://ghibliapi.herokuapp.com/.
+
 Los principales retos que resolví son:
   - Buscar por nombre de película aún cuando la API no cuenta con ese endpoint
   - Generar sugerencias a partir de términos ingresados en el buscador
