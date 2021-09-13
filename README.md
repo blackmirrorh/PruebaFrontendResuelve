@@ -12,4 +12,6 @@ Al ser un proyecto desarrollado en Angular su arquitectura se basa en Componente
 
 Para futuras mejoras del proyecto quisiera generar un nuevo endpoint para consultar las películas con el backend y trabajar de una mejor forma las sugerencias, además de realizar una mejora visual y ajustar las vistas para pantallas más pequeñas, ya que actualmente solo fue pensado para pantallas grandes.
 
+La parte más importante del código considero que es la de https://github.com/blackmirrorh/PruebaFrontendResuelve/blob/main/src/app/movies/search/search.component.ts ya que realimente ahí se encuentra toda la lógica.
+
 La applicación se encuentra alojada en el siguiente host https://prueba-frontend-resuelve.netlify.app/
