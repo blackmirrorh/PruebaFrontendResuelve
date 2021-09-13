@@ -1,7 +1,11 @@
 <form autocomplete="off" class="grid grid-cols-12 bg-purple-200 pt-2 pb-2">
   <img src="../../../assets/browser-image.png" class="col-start-4 w-52">
-  <input [(ngModel)]="word" name="movie" class="col-start-5 col-span-3 pl-2 rounded-lg border border-transparent mt-2 mb-2 ml-4" placeholder="type your movie here">
-  <button class="col-start-8 my-2 mx-5 bg-purple-400 border border-transparent rounded-lg text-white font-semibold" (click)="find(word)">
+  <input [(ngModel)]="word" name="word" class="col-start-5 col-span-3 pl-2 rounded-lg border border-transparent mt-2 mb-2 ml-4" 
+        placeholder="type your movie title here" (input)="suggestion()" id="autocomplete" list="browsers">
+  <datalist id="browsers">
+    <option *ngFor="let suggestion of suggestions" [value]="suggestion">
+  </datalist>
+  <button class="col-start-8 my-2 mx-5 bg-purple-400 border border-transparent rounded-lg text-white font-semibold" (click)="find()">
     Find it
   </button>
 </form>
@@ -10,15 +14,12 @@
   <img src="../../../assets/preloader.gif" alt="" class="col-start-2">
 </div>
 
-<!-- <div *ngIf="finded" class="grid grid-cols-5 mt-2">
-  <app-card class="col-start-2"></app-card>
-  <app-card class="col-start-3"></app-card>
-  <app-card class="col-start-4"></app-card>
-  <app-card class="col-start-2"></app-card>
-  <app-card class="col-start-3"></app-card>
-  <app-card class="col-start-4"></app-card>
-  <app-card class="col-start-2"></app-card>
-</div> -->
+<div *ngIf="notFounded" class="grid grid-cols-3 mt-32 py-2">
+  <div class="col-start-2 bg-red-200 rounded-xl text-center text-4xl">
+    This movie was not found
+  </div>  
+</div>
+
 <div *ngIf="finded" class="grid grid-cols-3">
   <app-card *ngFor="let m of foundMovies; let i = index" class="" [movie]="this.foundMovies[i]"></app-card>
   <div class="mt-2"></div>
